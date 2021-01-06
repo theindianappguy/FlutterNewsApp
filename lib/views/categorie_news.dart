@@ -3,7 +3,6 @@ import 'package:news_app_api/helper/news.dart';
 import 'package:news_app_api/helper/widgets.dart';
 
 class CategoryNews extends StatefulWidget {
-
   final String newsCategory;
 
   CategoryNews({this.newsCategory});
@@ -19,7 +18,6 @@ class _CategoryNewsState extends State<CategoryNews> {
   @override
   void initState() {
     getNews();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -36,53 +34,50 @@ class _CategoryNewsState extends State<CategoryNews> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Flutter",
-              style:
-              TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
-            ),
-            Text(
-              "News",
-              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
-            )
-          ],
+        title: RichText(
+          text: TextSpan(
+            text: 'Flutter',
+            style: TextStyle(
+                color: Colors.black87,
+                fontWeight: FontWeight.w600,
+                fontSize: 22),
+            children: <TextSpan>[
+              TextSpan(
+                text: 'News',
+                style:
+                    TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
         ),
-        actions: <Widget>[
-          Opacity(
-            opacity: 0,
-            child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Icon(Icons.share,)),
-          )
-        ],
         backgroundColor: Colors.transparent,
+        centerTitle: true,
         elevation: 0.0,
       ),
-      body: _loading ? Center(
-        child: CircularProgressIndicator(),
-      ) : SingleChildScrollView(
-        child: Container(
-            child: Container(
-              margin: EdgeInsets.only(top: 16),
-              child: ListView.builder(
-                  itemCount: newslist.length,
-                  shrinkWrap: true,
-                  physics: ClampingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return NewsTile(
-                      imgUrl: newslist[index].urlToImage ?? "",
-                      title: newslist[index].title ?? "",
-                      desc: newslist[index].description ?? "",
-                      content: newslist[index].content ?? "",
-                      posturl: newslist[index].articleUrl ?? "",
-                    );
-                  }),
+      body: _loading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Container(
+                child: Container(
+                  margin: EdgeInsets.only(top: 16),
+                  child: ListView.builder(
+                      itemCount: newslist.length,
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return NewsTile(
+                          imgUrl: newslist[index].urlToImage ?? "",
+                          title: newslist[index].title ?? "",
+                          desc: newslist[index].description ?? "",
+                          content: newslist[index].content ?? "",
+                          posturl: newslist[index].articleUrl ?? "",
+                        );
+                      }),
+                ),
+              ),
             ),
-        ),
-      ),
     );
   }
 }
