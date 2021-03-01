@@ -22,7 +22,10 @@ I will show how to create a flutter news app with NewsApi Org, In Flutter News A
 
 > If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
 >
-> - [PayPal](https://paypal.me/iamsanskartiwari)
+> - [buymeacoffee](https://www.buymeacoffee.com/sanskartiwari)
+
+> You can also nominate me for Github Star developer program
+> https://stars.github.com/nominate
 
 ### License
 
