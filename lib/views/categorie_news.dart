@@ -3,7 +3,6 @@ import 'package:news_app_api/helper/news.dart';
 import 'package:news_app_api/helper/widgets.dart';
 
 class CategoryNews extends StatefulWidget {
-
   final String newsCategory;
 
   CategoryNews({this.newsCategory});
@@ -19,7 +18,6 @@ class _CategoryNewsState extends State<CategoryNews> {
   @override
   void initState() {
     getNews();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -42,7 +40,7 @@ class _CategoryNewsState extends State<CategoryNews> {
             Text(
               "Flutter",
               style:
-              TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
             ),
             Text(
               "News",
@@ -55,34 +53,38 @@ class _CategoryNewsState extends State<CategoryNews> {
             opacity: 0,
             child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Icon(Icons.share,)),
+                child: Icon(
+                  Icons.share,
+                )),
           )
         ],
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
-      body: _loading ? Center(
-        child: CircularProgressIndicator(),
-      ) : SingleChildScrollView(
-        child: Container(
-            child: Container(
-              margin: EdgeInsets.only(top: 16),
-              child: ListView.builder(
-                  itemCount: newslist.length,
-                  shrinkWrap: true,
-                  physics: ClampingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return NewsTile(
-                      imgUrl: newslist[index].urlToImage ?? "",
-                      title: newslist[index].title ?? "",
-                      desc: newslist[index].description ?? "",
-                      content: newslist[index].content ?? "",
-                      posturl: newslist[index].articleUrl ?? "",
-                    );
-                  }),
+      body: _loading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Container(
+                child: Container(
+                  margin: EdgeInsets.only(top: 16),
+                  child: ListView.builder(
+                      itemCount: newslist.length,
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return NewsTile(
+                          imgUrl: newslist[index].urlToImage ?? "",
+                          title: newslist[index].title ?? "",
+                          desc: newslist[index].description ?? "",
+                          content: newslist[index].content ?? "",
+                          posturl: newslist[index].articleUrl ?? "",
+                        );
+                      }),
+                ),
+              ),
             ),
-        ),
-      ),
     );
   }
 }
