@@ -12,11 +12,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  bool _loading;
+  late bool _loading;
   var newslist;
 
-  List<CategorieModel> categories = List<CategorieModel>();
+  List<CategorieModel> categories = <CategorieModel>[];
 
   void getNews() async {
     News news = News();
@@ -40,7 +39,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "Flutter",
+              style:
+                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+            ),
+            Text(
+              "News",
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
+            )
+          ],
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+      ),
       body: SafeArea(
         child: _loading
             ? Center(
@@ -94,17 +110,18 @@ class _HomePageState extends State<HomePage> {
 class CategoryCard extends StatelessWidget {
   final String imageAssetUrl, categoryName;
 
-  CategoryCard({this.imageAssetUrl, this.categoryName});
+  CategoryCard({required this.imageAssetUrl, required this.categoryName});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => CategoryNews(
-            newsCategory: categoryName.toLowerCase(),
-          )
-        ));
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoryNews(
+                      newsCategory: categoryName.toLowerCase(),
+                    )));
       },
       child: Container(
         margin: EdgeInsets.only(right: 14),
@@ -125,8 +142,7 @@ class CategoryCard extends StatelessWidget {
               width: 120,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                color: Colors.black26
-              ),
+                  color: Colors.black26),
               child: Text(
                 categoryName,
                 textAlign: TextAlign.center,
