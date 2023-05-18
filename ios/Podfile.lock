@@ -3,20 +3,18 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - path_provider (0.0.1):
+  - path_provider_foundation (0.0.1):
     - Flutter
-  - path_provider_macos (0.0.1):
+    - FlutterMacOS
+  - sqflite (0.0.3):
     - Flutter
-  - sqflite (0.0.1):
-    - Flutter
-    - FMDB (~> 2.7.2)
+    - FMDB (>= 2.7.5)
   - webview_flutter (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - path_provider (from `.symlinks/plugins/path_provider/ios`)
-  - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
 
@@ -27,23 +25,20 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  path_provider:
-    :path: ".symlinks/plugins/path_provider/ios"
-  path_provider_macos:
-    :path: ".symlinks/plugins/path_provider_macos/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
   webview_flutter:
     :path: ".symlinks/plugins/webview_flutter/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
-  path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
-  sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
-  webview_flutter: bec7599de6bfbe8008a739aa3ebd7b364ea9d0cd
+  path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
+  sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
+  webview_flutter: d2b4d6c66968ad042ad94cbb791f5b72b4678a96
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 
-COCOAPODS: 1.9.0
+COCOAPODS: 1.11.3

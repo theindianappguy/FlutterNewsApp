@@ -1,3 +1,4 @@
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app_api/helper/data.dart';
@@ -5,6 +6,7 @@ import 'package:news_app_api/helper/widgets.dart';
 import 'package:news_app_api/models/categorie_model.dart';
 import 'package:news_app_api/views/categorie_news.dart';
 import '../helper/news.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,7 +18,11 @@ class _HomePageState extends State<HomePage> {
   bool _loading;
   var newslist;
 
+  GlobalKey<ScaffoldState> _key;
+
   List<CategorieModel> categories = List<CategorieModel>();
+  List<String> categoriesName = [];
+
 
   void getNews() async {
     News news = News();
@@ -34,13 +40,20 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     categories = getCategories();
+    categories.forEach((element) {
+      categoriesName.add(element.categorieName);
+    });
+
     getNews();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: customDrawer(categoriesName),
       appBar: MyAppBar(),
+      //appBar: AppBar(
+
       body: SafeArea(
         child: _loading
             ? Center(
